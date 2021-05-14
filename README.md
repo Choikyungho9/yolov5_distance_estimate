@@ -19,13 +19,13 @@ detect.py에서 수정한 코드는 아래와 같습니다.
 
 ```
 if save_img or opt.save_crop or view_img:  # Add bbox to image
-                        c = int(cls)  # integer class
-                        label = None if opt.hide_labels else (names[c] if opt.hide_conf else f'{x_top:.2f} {y_top:.2f} {width:.2f} {height:.2f}')
-                        distancei = (2 * 31.4 * 180) / (width + height) * 10
-                        label2 = f'{names[0]} {distancei:.1f}cm'
-                        #print(label2, distancei)
-                        plot_one_box(xyxy, im0, label=f'{distancei:.1f}cm', color=colors(c, True), line_thickness=1)
-                        #cv2.putText(frame, str(label2), (x_top,y_top+5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, colors(c, True),2)
-                        if opt.save_crop:
-                            save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+    c = int(cls)  # integer class
+    label = None if opt.hide_labels else (names[c] if opt.hide_conf else f'{x_top:.2f} {y_top:.2f} {width:.2f} {height:.2f}')
+    distancei = (2 * 31.4 * 180) / (width + height) * 10
+    label2 = f'{names[0]} {distancei:.1f}cm'
+    #print(label2, distancei)
+    plot_one_box(xyxy, im0, label=f'{distancei:.1f}cm', color=colors(c, True), line_thickness=1)
+    #cv2.putText(frame, str(label2), (x_top,y_top+5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, colors(c, True),2)
+    if opt.save_crop:
+        save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
 ```
